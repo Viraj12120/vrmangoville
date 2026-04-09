@@ -1,0 +1,52 @@
+'use client';
+
+import Image from 'next/image';
+import { useRef } from 'react';
+
+interface CinematicSlideProps {
+  title: string;
+  subtitle: string;
+  content: string;
+  image: string;
+  index: number;
+}
+
+export default function CinematicSlide({ title, subtitle, content, image, index }: CinematicSlideProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  return (
+    <div 
+      ref={containerRef}
+      className={`absolute inset-0 w-full h-screen overflow-hidden flex items-center justify-center cinematic-slide-${index}`}
+      style={{ zIndex: 10 + index }}
+    >
+      {/* Background Image with Dark Cinematic Overlay */}
+      <div className="absolute inset-0 bg-black">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className="object-cover scale-110 slide-image"
+          priority={index < 2}
+        />
+        {/* Dark overlays for the cinematic look within the slide */}
+        <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60" />
+      </div>
+
+      {/* White Content for high contrast */}
+      <div className="relative z-10 max-w-5xl px-6 text-center">
+        <span className="block text-saffron font-display text-sm uppercase tracking-[0.3em] mb-6 slide-subtitle opacity-0 translate-y-4">
+          {subtitle}
+        </span>
+        <h2 className="text-6xl md:text-8xl font-display font-bold text-white mb-8 leading-tight slide-title opacity-0 translate-y-8">
+          {title}
+        </h2>
+        <div className="w-24 h-[1px] bg-saffron/50 mx-auto mb-8 slide-line scale-x-0" />
+        <p className="text-xl md:text-2xl text-white/80 font-sans leading-relaxed max-w-2xl mx-auto slide-content opacity-0 translate-y-4">
+          {content}
+        </p>
+      </div>
+    </div>
+  );
+}
