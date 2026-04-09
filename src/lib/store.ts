@@ -9,6 +9,7 @@ interface ExperienceDetail {
 interface ExperienceState {
   isVideoActive: boolean;
   activeDetail: ExperienceDetail | null;
+  isMenuOpen: boolean;
   
   triggerVideo: () => void;
   startVideo: () => void;
@@ -16,6 +17,7 @@ interface ExperienceState {
   
   openDetail: (detail: ExperienceDetail) => void;
   closeDetail: () => void;
+  setMenuOpen: (open: boolean) => void;
 }
 
 export const useExperienceStore = create<ExperienceState>((set) => ({
@@ -36,4 +38,8 @@ export const useExperienceStore = create<ExperienceState>((set) => ({
   openDetail: (detail) => set({ activeDetail: detail }),
 
   closeDetail: () => set({ activeDetail: null }),
+
+  isMenuOpen: false,
+
+  setMenuOpen: (open) => set({ isMenuOpen: open }),
 }));

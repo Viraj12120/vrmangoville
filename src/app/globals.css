@@ -32,6 +32,7 @@ html, body {
   color: var(--foreground);
   font-family: var(--font-inter);
   overflow-x: hidden;
+  max-width: 100%;
   -webkit-font-smoothing: antialiased;
 }
 

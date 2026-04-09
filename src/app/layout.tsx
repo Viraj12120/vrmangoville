@@ -6,6 +6,7 @@ import Texture from "@/components/Texture";
 import ExpressiveCursor from "@/components/ExpressiveCursor";
 import HoverReveal from "@/components/HoverReveal";
 import ExperienceManager from "@/components/ExperienceManager";
+import MobileMenu from "@/components/MobileMenu";
 
 export const metadata: Metadata = {
   title: "VR Mangoville | Premium Kesar Mangoes",
@@ -24,6 +25,7 @@ export default function RootLayout({
           <Texture />
           <ExpressiveCursor />
           <HoverReveal />
+          <MobileMenu />
           <SmoothScroll>
             {children}
           </SmoothScroll>

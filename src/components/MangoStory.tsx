@@ -6,71 +6,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useRef } from 'react';
 import CinematicSlide from './CinematicSlide';
 import Hero from './Hero';
+import { STORY_DATA, FOOTER_QUOTE } from '@/lib/data';
 
 gsap.registerPlugin(ScrollTrigger);
-
-const STORY_DATA = [
-  {
-    subtitle: "The Ancestry",
-    title: "Heirloom Origins",
-    content: "The journey begins with heirloom seeds, passed down through generations of master cultivators who understand the unique rhythm of the land.",
-    image: "/story/1.png"
-  },
-  {
-    subtitle: "The Soil",
-    title: "Rare Red Earth",
-    content: "The legendary red volcanic soil of Gujarat provides the essential minerals and soul for every Kesar mango tree in our orchard.",
-    image: "/story/2.png"
-  },
-  {
-    subtitle: "The Monsoon",
-    title: "Nurtured by Rain",
-    content: "Life-giving monsoon rains wash the orchard in vibrant freshness, nourishing the trees for the intense season ahead.",
-    image: "/story/3.png"
-  },
-  {
-    subtitle: "The Blossom",
-    title: "Promises of Spring",
-    content: "In the cool winter, delicate white blossoms appear, carrying the intoxicating aroma that signals the coming of the 'Queen of Mangoes'.",
-    image: "/story/4.png"
-  },
-  {
-    subtitle: "The Growth",
-    title: "Green Sanctuaries",
-    content: "Each mango develops slowly under a dense, lush canopy, protected and shaded by nature’s intricate green embrace.",
-    image: "/story/5.png"
-  },
-  {
-    subtitle: "The Care",
-    title: "Artisanal Protection",
-    content: "We practice sustainable, organic care, ensuring every piece of fruit grows without compromise in a pristine environment.",
-    image: "/story/6.png"
-  },
-  {
-    subtitle: "The Sunlight",
-    title: "Sun-Drenched Ripeness",
-    content: "Intense summer sunlight works its magic, meticulously transforming starch into the pure, golden sweetness we are famous for.",
-    image: "/story/7.png"
-  },
-  {
-    subtitle: "The Harvest",
-    title: "Hand-Picked Heritage",
-    content: "Our harvesters assess every fruit individually, hand-picking only at the precise micro-moment of peak natural ripeness.",
-    image: "/story/8.png"
-  },
-  {
-    subtitle: "The Curation",
-    title: "Premium Selection",
-    content: "The absolute finest specimens are hand-selected and curated into premium crates, ready for their journey to connoisseurs worldwide.",
-    image: "/story/9.png"
-  },
-  {
-    subtitle: "The Experience",
-    title: "Nature’s Liquid Gold",
-    content: "Finally, savor the velvety texture and intoxicating honey-like flavor that makes VR Mangoville a global benchmark of quality.",
-    image: "/story/10.png"
-  }
-];
 
 export default function MangoStory() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -133,7 +71,6 @@ export default function MangoStory() {
           "<"
         );
 
-        // Progress bar (Horizontal now)
         tl.to(`.progress-bar-${i}`, { scaleX: 1, ease: 'none', duration: 1.5 }, "<");
       } else {
         tl.to('.cinematic-slide-0 .slide-image', { scale: 1.05, ease: 'none', duration: 1.5 });
@@ -151,8 +88,8 @@ export default function MangoStory() {
       
       <section id="story-start" ref={storyRef} className="relative h-screen w-full overflow-hidden bg-white">
         {/* Intro Overlay persistent title */}
-        <div className="absolute top-12 left-1/2 -translate-x-1/2 z-[100] pointer-events-none opacity-5">
-          <h1 className="text-stone-900 font-display text-8xl md:text-[12rem] font-bold whitespace-nowrap uppercase tracking-tighter">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[100] pointer-events-none opacity-[0.03] md:opacity-[0.05] overflow-hidden w-full h-full flex items-center justify-center">
+          <h1 className="text-stone-900 font-display text-5xl md:text-[15rem] font-bold whitespace-nowrap uppercase tracking-tighter rotate-[-5deg] md:rotate-0">
             The Story
           </h1>
         </div>
@@ -173,12 +110,12 @@ export default function MangoStory() {
           </div>
         ))}
 
-        {/* Horizontal Progress Indicator at the bottom */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-4">
+        {/* Horizontal Progress Indicator */}
+        <div className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-2 md:gap-4 px-6 w-full max-w-sm md:max-w-xl">
           {STORY_DATA.map((_, i) => (
             <div 
               key={i} 
-              className="w-12 h-[2px] bg-white/20 relative overflow-hidden rounded-full"
+              className="flex-1 h-[2px] bg-white/20 relative overflow-hidden rounded-full"
             >
               <div className={`absolute inset-0 bg-saffron origin-left scale-x-0 progress-bar-${i}`} />
             </div>
@@ -187,9 +124,9 @@ export default function MangoStory() {
       </section>
 
       {/* Footer / End Quote Section */}
-      <section className="h-screen flex items-center justify-center bg-white relative z-20">
-        <h2 className="text-4xl md:text-6xl font-display text-stone-900 text-center px-6 italic font-light max-w-4xl">
-          "A legacy of taste, handed down through generations, optimized for the modern world."
+      <section className="h-screen flex items-center justify-center bg-white relative z-20 px-6 overflow-hidden">
+        <h2 className="text-2xl md:text-6xl font-display text-stone-900 text-center italic font-light max-w-4xl leading-snug">
+          "{FOOTER_QUOTE}"
         </h2>
       </section>
     </main>
