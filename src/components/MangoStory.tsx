@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useRef } from 'react';
 import CinematicSlide from './CinematicSlide';
 import Hero from './Hero';
+import Gallery from './Gallery';
 import { STORY_DATA, FOOTER_QUOTE } from '@/lib/data';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -16,7 +17,7 @@ export default function MangoStory() {
 
   useGSAP(() => {
     const slides = gsap.utils.toArray('.cinematic-slide');
-    
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: storyRef.current,
@@ -36,11 +37,11 @@ export default function MangoStory() {
 
     slides.forEach((slide: any, i: number) => {
       if (i > 0) {
-        tl.fromTo(slide, 
-          { clipPath: 'inset(100% 0% 0% 0%)' }, 
+        tl.fromTo(slide,
+          { clipPath: 'inset(100% 0% 0% 0%)' },
           { clipPath: 'inset(0% 0% 0% 0%)', ease: 'none', duration: 1.5 }
         );
-        
+
         tl.fromTo(slide.querySelector('.slide-image'),
           { scale: 1.15 },
           { scale: 1, ease: 'none', duration: 1.5 },
@@ -52,7 +53,7 @@ export default function MangoStory() {
           { y: 0, opacity: 1, duration: 0.6 },
           "-=0.6"
         );
-        
+
         tl.fromTo(slide.querySelector('.slide-subtitle'),
           { y: 20, opacity: 0 },
           { y: 0, opacity: 1, duration: 0.6 },
@@ -85,7 +86,7 @@ export default function MangoStory() {
   return (
     <main ref={containerRef} className="bg-white overflow-x-hidden">
       <Hero />
-      
+
       <section id="story-start" ref={storyRef} className="relative h-screen w-full overflow-hidden bg-white">
         {/* Intro Overlay persistent title */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[100] pointer-events-none opacity-[0.03] md:opacity-[0.05] overflow-hidden w-full h-full flex items-center justify-center">
@@ -95,8 +96,8 @@ export default function MangoStory() {
         </div>
 
         {STORY_DATA.map((data, i) => (
-          <div 
-            key={i} 
+          <div
+            key={i}
             className="cinematic-slide absolute inset-0"
             style={{ zIndex: 10 + i }}
           >
@@ -113,8 +114,8 @@ export default function MangoStory() {
         {/* Horizontal Progress Indicator */}
         <div className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-[100] flex items-center gap-2 md:gap-4 px-6 w-full max-w-sm md:max-w-xl">
           {STORY_DATA.map((_, i) => (
-            <div 
-              key={i} 
+            <div
+              key={i}
               className="flex-1 h-[2px] bg-white/20 relative overflow-hidden rounded-full"
             >
               <div className={`absolute inset-0 bg-saffron origin-left scale-x-0 progress-bar-${i}`} />
@@ -123,6 +124,7 @@ export default function MangoStory() {
         </div>
       </section>
 
+      <Gallery />
       {/* Footer / End Quote Section */}
       <section className="h-screen flex items-center justify-center bg-white relative z-20 px-6 overflow-hidden">
         <h2 className="text-2xl md:text-6xl font-display text-stone-900 text-center italic font-light max-w-4xl leading-snug">

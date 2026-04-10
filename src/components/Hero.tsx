@@ -45,8 +45,19 @@ export default function Hero() {
           <button
             onClick={startVideo}
             className="group relative interactive py-2 overflow-hidden px-2"
+            onMouseEnter={(e) => {
+              const rect = e.currentTarget.getBoundingClientRect();
+              window.dispatchEvent(new CustomEvent('magnetize-stick', {
+                detail: { hover: true, x: rect.left, y: rect.bottom, width: rect.width },
+              }));
+            }}
+            onMouseLeave={() => {
+              window.dispatchEvent(new CustomEvent('magnetize-stick', {
+                detail: { hover: false },
+              }));
+            }}
           >
-            <span className={`font-display font-bold text-xs md:text-sm tracking-widest transition-colors ${isVideoActive ? 'text-white' : 'text-foreground'}`}>
+            <span className={`font-display font-bold text-xs md:text-base tracking-widest transition-colors ${isVideoActive ? 'text-white' : 'text-foreground'}`}>
               EXPERIENCE
             </span>
           </button>
@@ -73,7 +84,18 @@ export default function Hero() {
           <Magnetic key={idx}>
             <button
               onClick={() => document.getElementById(item.href)?.scrollIntoView({ behavior: 'smooth' })}
-              className="relative interactive py-2 font-display font-bold text-sm tracking-widest px-2"
+              className="relative interactive py-2 font-display font-bold text-base tracking-widest px-2"
+              onMouseEnter={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                window.dispatchEvent(new CustomEvent('magnetize-stick', {
+                  detail: { hover: true, x: rect.left, y: rect.bottom, width: rect.width },
+                }));
+              }}
+              onMouseLeave={() => {
+                window.dispatchEvent(new CustomEvent('magnetize-stick', {
+                  detail: { hover: false },
+                }));
+              }}
             >
               {item.label}
             </button>
@@ -88,7 +110,7 @@ export default function Hero() {
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[600px] md:h-[600px] bg-gradient-to-br from-saffron via-golden to-green opacity-10 blur-[80px] md:blur-[120px] rounded-full"
       />
 
-      <div className="relative z-10 text-center max-w-4xl">
+      <div className="relative z-10 text-center w-full max-w-4xl mx-auto flex flex-col items-center">
         <span className={`inline-block ${accentColor} font-display text-[10px] md:text-sm uppercase tracking-[0.3em] mb-8 md:mb-12 overflow-hidden transition-colors duration-1000 animate-pulse`}>
           {HERO_CONTENT.tagline}
         </span>
@@ -108,13 +130,16 @@ export default function Hero() {
 
         <div className="h-8 md:h-16 w-full" />
 
-        <p className={`text-sm md:text-xl ${isVideoActive ? 'text-white/70' : 'text-foreground/60'} max-w-xl mx-auto font-sans leading-relaxed transition-colors duration-1000 px-4`}>
+        <p className={`text-sm md:text-xl ${isVideoActive ? 'text-white/70' : 'text-foreground/60'} max-w-xl mx-auto font-sans leading-relaxed transition-colors duration-1000 `}>
           {HERO_CONTENT.description.split('Raw & Ripened')[0]}
           <span className={`${accentColor} font-semibold transition-colors duration-1000`}>Raw & Ripened</span>
           {HERO_CONTENT.description.split('Raw & Ripened')[1]}
         </p>
 
-        <div className="mt-16 md:mt-24 flex flex-col md:flex-row gap-6 md:gap-12 justify-center items-center">
+
+        <div className="h-8 md:h-16 w-full" />
+
+        <div className="mt-52 md:mt-24 flex flex-col md:flex-row gap-6 md:gap-12 justify-center items-center">
           <Magnetic>
             <button className="group relative interactive py-2 overflow-hidden">
               <span className={`font-display font-semibold tracking-wider transition-colors ${isVideoActive ? 'text-white' : 'text-foreground'}`}>
@@ -135,7 +160,7 @@ export default function Hero() {
       </div>
 
       {/* Bottom Scroll Indicator - Simplified for Mobile */}
-      <div 
+      <div
         onClick={() => {
           document.getElementById('story-start')?.scrollIntoView({ behavior: 'smooth' });
         }}

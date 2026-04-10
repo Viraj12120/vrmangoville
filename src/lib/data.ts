@@ -76,3 +76,14 @@ export const STORY_DATA = [
 ];
 
 export const FOOTER_QUOTE = "A legacy of taste, handed down through generations, optimized for the modern world.";
+
+export const GALLERY_IMAGES = [
+  { image: '/story/1.png', alt: 'Heirloom Origins', description: 'The absolute finest origin points carefully mapped and monitored by our master cultivators over decades.' },
+  { image: '/story/2.png', alt: 'Morning Harvest', description: 'At the crack of dawn, when the morning dew still clings to leaves, our delicate harvest process begins.' },
+  { image: '/story/3.png', alt: 'Blossom Season', description: 'The first hints of white blossoms indicate the start of a robust and aromatic yielding season.' },
+  { image: '/story/4.png', alt: 'Orchard Rows', description: 'Precision-spaced orchard lines allow the natural sea breeze and sunlight to hit every branch equally.' },
+  { image: '/story/5.png', alt: 'Hand Picking', description: 'No machinery touches our premium fruit. Every mango is individually assessed and detached by hand.' },
+  { image: '/story/6.png', alt: 'Golden Selection', description: 'Only the top 5% of the yield exhibiting perfect symmetry and color gradient make the cut for export.' },
+  { image: '/story/7.png', alt: 'Sun Dried', description: 'Traditional localized aging techniques allow the natural starches to convert to honey-like sugars.' },
+  { image: '/story/8.png', alt: 'Fresh Harvest', description: 'Boxed in premium aeration crates immediately after selection to ensure it lands on your table perfect.' },
+];
