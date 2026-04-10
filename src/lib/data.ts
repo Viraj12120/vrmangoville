@@ -75,7 +75,28 @@ export const STORY_DATA = [
   }
 ];
 
-export const FOOTER_QUOTE = "A legacy of taste, handed down through generations, optimized for the modern world.";
+export const FOOTER_QUOTE = "From our roots to your table, cultivating joy organically.";
+
+export const TESTIMONIALS = [
+  {
+    name: "Pascal Tolley Ward",
+    title: "Founder & CEO, Eartcere",
+    avatar: "https://i.pravatar.cc/150?img=11",
+    text: "Working with VR Mangoville has been like having a team of wizards on my side. They took my vision and turned it into reality. From flawless orchard care to incredibly fresh produce, they turned my expectations into an absolute delight. The team actually makes you feel like their top priority."
+  },
+  {
+    name: "Tarak Patel",
+    title: "Co-Founder, Zymo Cosmooon",
+    avatar: "https://i.pravatar.cc/150?img=12",
+    text: "VR Mangoville didn't just sell us mangoes, they transformed our understanding of quality. From a sleek organic tracking system to an engaging farm-to-table experience, they've fueled our appreciation since day one. We've seen better taste, better engagement, and a stronger brand."
+  },
+  {
+    name: "Sarah Jenkins",
+    title: "Head of Procurement, FreshFoods",
+    avatar: "https://i.pravatar.cc/150?img=5",
+    text: "Absolutely stunning produce and a joy to partner with. Deadlines? Met. Urgent deliveries? Done. The reliability is just unparalleled. They are truly the best in the organic mango business, delivering highly curated experiences every single harvest effortlessly."
+  }
+];
 
 export const GALLERY_IMAGES = [
   { image: '/story/1.png', alt: 'Heirloom Origins', description: 'The absolute finest origin points carefully mapped and monitored by our master cultivators over decades.' },

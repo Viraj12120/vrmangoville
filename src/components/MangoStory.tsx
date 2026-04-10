@@ -7,6 +7,7 @@ import { useRef } from 'react';
 import CinematicSlide from './CinematicSlide';
 import Hero from './Hero';
 import Gallery from './Gallery';
+import Social from './Social';
 import { STORY_DATA, FOOTER_QUOTE } from '@/lib/data';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -125,12 +126,10 @@ export default function MangoStory() {
       </section>
 
       <Gallery />
+      <Social />
+
       {/* Footer / End Quote Section */}
-      <section className="h-screen flex items-center justify-center bg-white relative z-20 px-6 overflow-hidden">
-        <h2 className="text-2xl md:text-6xl font-display text-stone-900 text-center italic font-light max-w-4xl leading-snug">
-          "{FOOTER_QUOTE}"
-        </h2>
-      </section>
+
     </main>
   );
 }
