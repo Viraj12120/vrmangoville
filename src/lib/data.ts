@@ -1,6 +1,5 @@
 export const NAV_LINKS = [
   { label: 'STORY', href: 'story-start' },
-  { label: 'OUR ORCHARDS', href: 'gallery' },
   { label: 'SOCIAL', href: 'social' },
 ];
 

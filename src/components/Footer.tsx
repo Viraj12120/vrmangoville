@@ -27,10 +27,30 @@ export default function Footer() {
         rotate: 0,
         stagger: 0.05,
         duration: 1.5,
+        delay: 0.4,
         ease: 'power4.out',
         scrollTrigger: {
           trigger: container,
-          start: 'top 80%',
+          start: 'top 70%',
+          refreshPriority: -3
+        },
+      }
+    );
+
+    // Stagger in the middle links
+    gsap.fromTo(
+      ".footer-link-col",
+      { y: 40, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.15,
+        duration: 1.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: container,
+          start: 'top 65%',
+          refreshPriority: -3
         },
       }
     );
@@ -55,20 +75,28 @@ export default function Footer() {
 
       {/* Middle Links */}
       <div className="w-full flex flex-col md:flex-row justify-center items-center gap-12 md:gap-32 mt-32 mb-24 px-8 relative z-10">
-        <div className="flex flex-col items-center text-center gap-2">
+        <div className="footer-link-col flex flex-col items-center text-center gap-2">
           <span className="text-stone-400 font-sans text-xs font-bold uppercase tracking-widest mb-2">Location</span>
-          <p className="text-stone-600 font-sans text-sm md:text-base">Gujarat, India</p>
-          <p className="text-stone-600 font-sans text-sm md:text-base">Organic Orchards</p>
+          <p className="text-stone-600 font-sans text-sm md:text-base">Atpost Gharniki,Taluka Atpadi , Zilla Sangli</p>
+          <p className="text-stone-600 font-sans text-sm md:text-base">Maharashtra</p>
         </div>
-        <div className="flex flex-col items-center text-center gap-2">
+        <div className="footer-link-col flex flex-col items-center text-center gap-2">
           <span className="text-stone-400 font-sans text-xs font-bold uppercase tracking-widest mb-2">Connect</span>
-          <a href="#" className="text-stone-600 font-sans text-sm md:text-base hover:text-saffron transition-colors">Instagram</a>
-          <a href="#" className="text-stone-600 font-sans text-sm md:text-base hover:text-saffron transition-colors">Facebook</a>
+          <Magnetic>
+            <a href="https://www.instagram.com/vr.mangoville?igsh=MXI3czkxY2M0NjBy" target="_blank" rel="noopener noreferrer" className="inline-block px-2 py-1 text-stone-600 font-sans text-sm md:text-base hover:text-saffron transition-colors">Instagram</a>
+          </Magnetic>
+          <Magnetic>
+            <a href="https://www.facebook.com/profile.php?id=61555271851953&sfnsn=wa" target="_blank" rel="noopener noreferrer" className="inline-block px-2 py-1 text-stone-600 font-sans text-sm md:text-base hover:text-saffron transition-colors">Facebook</a>
+          </Magnetic>
         </div>
-        <div className="flex flex-col items-center text-center gap-2">
+        <div className="footer-link-col flex flex-col items-center text-center gap-2">
           <span className="text-stone-400 font-sans text-xs font-bold uppercase tracking-widest mb-2">Legal</span>
-          <a href="#" className="text-stone-600 font-sans text-sm md:text-base hover:text-saffron transition-colors">Privacy Policy</a>
-          <a href="#" className="text-stone-600 font-sans text-sm md:text-base hover:text-saffron transition-colors">Terms of Service</a>
+          <Magnetic>
+            <a href="#" className="inline-block px-2 py-1 text-stone-600 font-sans text-sm md:text-base hover:text-saffron transition-colors">Privacy Policy</a>
+          </Magnetic>
+          <Magnetic>
+            <a href="#" className="inline-block px-2 py-1 text-stone-600 font-sans text-sm md:text-base hover:text-saffron transition-colors">Terms of Service</a>
+          </Magnetic>
         </div>
       </div>
 
