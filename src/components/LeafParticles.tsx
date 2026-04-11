@@ -10,7 +10,7 @@ const MANGO_LEAF_SVG = `
 `;
 
 const SMALL_BRANCH_SVG = `
-  <path d="M0 17 L35 17" stroke="currentColor" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <path d="M0 17 L35 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
 `;
 
 
@@ -178,9 +178,9 @@ export default function LeafParticles() {
           overwrite: 'auto'
         });
 
-        // Form the underline perfectly horizontal (0 deg) matching the exact text width
+        // Form the underline slightly narrower than the text
         const originalWidth = parseFloat(item.style.width);
-        const stretchScale = width / originalWidth;
+        const stretchScale = (width * 0.7) / originalWidth;
 
         gsap.to(innerItem, {
           rotation: 0,

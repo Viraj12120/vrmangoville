@@ -1,8 +1,10 @@
 'use client';
+import Image from 'next/image';
 
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { useRef } from 'react';
+import Navbar from './Navbar';
 import Magnetic from './Magnetic';
 import LeafParticles from './LeafParticles';
 import { useExperienceStore } from '@/lib/store';
@@ -39,69 +41,7 @@ export default function Hero() {
       ref={container}
       className={`relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 transition-colors duration-1000 ${isVideoActive ? 'bg-black/20' : ''}`}
     >
-      {/* EXPERIENCE Button - Top Left on Mobile, Top Right on Desktop */}
-      <div className="absolute top-8 left-8 md:left-auto md:right-8 z-[100]">
-        <Magnetic>
-          <button
-            onClick={startVideo}
-            className="group relative interactive py-2 overflow-hidden px-2"
-            onMouseEnter={(e) => {
-              const rect = e.currentTarget.getBoundingClientRect();
-              window.dispatchEvent(new CustomEvent('magnetize-stick', {
-                detail: { hover: true, x: rect.left, y: rect.bottom, width: rect.width },
-              }));
-            }}
-            onMouseLeave={() => {
-              window.dispatchEvent(new CustomEvent('magnetize-stick', {
-                detail: { hover: false },
-              }));
-            }}
-          >
-            <span className={`font-display font-bold text-xs md:text-base tracking-widest transition-colors ${isVideoActive ? 'text-white' : 'text-foreground'}`}>
-              EXPERIENCE
-            </span>
-          </button>
-        </Magnetic>
-      </div>
-
-      {/* HAMBURGER - Top Right for Mobile */}
-      <div className="absolute top-8 right-8 z-[100] lg:hidden">
-        <Magnetic>
-          <button
-            onClick={() => setMenuOpen(true)}
-            className={`flex flex-col gap-1.5 p-2 transition-colors ${isVideoActive ? 'text-white' : 'text-foreground'}`}
-          >
-            <div className="w-6 h-[2px] bg-current" />
-            <div className="w-6 h-[2px] bg-current" />
-            <div className="w-4 h-[2px] bg-current self-end" />
-          </button>
-        </Magnetic>
-      </div>
-
-      {/* Centered Navbar - Hidden on Mobile */}
-      <nav className={`absolute top-8 left-1/2 -track-x-1/2 z-[100] hidden lg:flex gap-12 items-center transition-colors duration-1000 ${isVideoActive ? 'text-white' : 'text-foreground'}`} style={{ transform: 'translateX(-50%)' }}>
-        {NAV_LINKS.map((item, idx) => (
-          <Magnetic key={idx}>
-            <button
-              onClick={() => document.getElementById(item.href)?.scrollIntoView({ behavior: 'smooth' })}
-              className="relative interactive py-2 font-display font-bold text-base tracking-widest px-2"
-              onMouseEnter={(e) => {
-                const rect = e.currentTarget.getBoundingClientRect();
-                window.dispatchEvent(new CustomEvent('magnetize-stick', {
-                  detail: { hover: true, x: rect.left, y: rect.bottom, width: rect.width },
-                }));
-              }}
-              onMouseLeave={() => {
-                window.dispatchEvent(new CustomEvent('magnetize-stick', {
-                  detail: { hover: false },
-                }));
-              }}
-            >
-              {item.label}
-            </button>
-          </Magnetic>
-        ))}
-      </nav>
+      <Navbar />
 
       <LeafParticles />
 
@@ -141,7 +81,7 @@ export default function Hero() {
 
         <div className="mt-52 md:mt-24 flex flex-col md:flex-row gap-6 md:gap-12 justify-center items-center">
           <Magnetic>
-            <button 
+            <button
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
               className="group relative interactive py-2 overflow-hidden"
             >
@@ -152,7 +92,7 @@ export default function Hero() {
             </button>
           </Magnetic>
           <Magnetic>
-            <button 
+            <button
               onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
               className="group relative interactive py-2 overflow-hidden"
             >

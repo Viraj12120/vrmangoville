@@ -41,11 +41,28 @@ export default function Contact() {
         opacity: 1,
         rotate: 0,
         duration: 1.2,
-        stagger: 0.2,
+        stagger: 0.15,
         ease: "power3.out",
         scrollTrigger: {
           trigger: container,
-          start: "top 75%",
+          start: "top 60%",
+          refreshPriority: -2
+        }
+      }
+    );
+
+    // Stagger in the booking text words
+    gsap.fromTo(".booking-word",
+      { opacity: 0, y: 15 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.05,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: container,
+          start: "top 60%",
           refreshPriority: -2
         }
       }
@@ -58,13 +75,17 @@ export default function Contact() {
 
       {/* Top Right Booking CTA */}
       <p className="absolute top-8 right-8 md:top-12 md:right-12 z-50 text-white font-sans text-xs md:text-sm font-bold tracking-widest uppercase">
-        For booking dm us on WhatsApp
+        {"For booking dm us on WhatsApp".split(' ').map((word, i) => (
+          <span key={i} className="booking-word inline-block">{word}&nbsp;</span>
+        ))}
       </p>
 
       {/* Central Titles */}
       <div className="relative z-10 flex w-full flex-col items-center justify-center pointer-events-none -mt-32 px-4">
-        <h2 className="title-part font-display text-6xl md:text-8xl lg:text-9xl font-bold text-white tracking-widest uppercase text-center w-full">
-          JOIN US AT
+        <h2 className="font-display text-6xl md:text-8xl lg:text-9xl font-bold text-white tracking-widest uppercase text-center w-full">
+          {"JOIN US AT".split(' ').map((word, i) => (
+            <span key={i} className="title-part inline-block">{word}&nbsp;</span>
+          ))}
         </h2>
       </div>
 

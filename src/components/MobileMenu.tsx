@@ -8,7 +8,7 @@ import { NAV_LINKS } from '@/lib/data';
 import Magnetic from './Magnetic';
 
 export default function MobileMenu() {
-  const { isMenuOpen, setMenuOpen } = useExperienceStore();
+  const { isMenuOpen, setMenuOpen, startVideo } = useExperienceStore();
   const container = useRef<HTMLDivElement>(null);
   const menuItemsRef = useRef<HTMLDivElement>(null);
 
@@ -76,15 +76,28 @@ export default function MobileMenu() {
             </button>
           </Magnetic>
         ))}
+        
+        <Magnetic>
+          <button 
+            onClick={() => {
+              setMenuOpen(false);
+              setTimeout(() => { startVideo() }, 600);
+            }}
+            className="text-4xl md:text-6xl font-display font-bold text-stone-900 hover:text-saffron transition-colors mt-4"
+          >
+            EXPERIENCE
+          </button>
+        </Magnetic>
       </nav>
 
-      {/* Social Links Placeholder */}
+      {/* Social Links */}
       <div className="absolute bottom-12 flex gap-8">
-        {['INSTA', 'X', 'YT'].map((social) => (
-          <span key={social} className="font-display font-medium text-stone-400 tracking-widest text-sm">
-            {social}
-          </span>
-        ))}
+        <a href="https://www.instagram.com/vr.mangoville?igsh=MXI3czkxY2M0NjBy" target="_blank" rel="noopener noreferrer" className="font-display font-medium text-stone-400 hover:text-saffron tracking-widest text-sm transition-colors">
+          INSTAGRAM
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61555271851953&sfnsn=wa" target="_blank" rel="noopener noreferrer" className="font-display font-medium text-stone-400 hover:text-saffron tracking-widest text-sm transition-colors">
+          FACEBOOK
+        </a>
       </div>
     </div>
   );
