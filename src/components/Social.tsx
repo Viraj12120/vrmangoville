@@ -62,7 +62,7 @@ export default function Social() {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="relative w-full h-screen bg-[#050505] overflow-hidden">
+    <section ref={containerRef} id="social" className="relative w-full h-screen bg-[#050505] overflow-hidden">
       {/* Central Social Title -> Locked and centered */}
       <div className="absolute inset-0 z-50 flex items-center justify-center pointer-events-none mix-blend-difference">
         <h2 className="font-display text-6xl md:text-9xl font-bold text-white tracking-widest uppercase">

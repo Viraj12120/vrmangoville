@@ -8,6 +8,8 @@ import CinematicSlide from './CinematicSlide';
 import Hero from './Hero';
 import Gallery from './Gallery';
 import Social from './Social';
+import Contact from './Contact';
+import Footer from './Footer';
 import { STORY_DATA, FOOTER_QUOTE } from '@/lib/data';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -127,8 +129,8 @@ export default function MangoStory() {
 
       <Gallery />
       <Social />
-
-      {/* Footer / End Quote Section */}
+      <Contact />
+      <Footer />
 
     </main>
   );

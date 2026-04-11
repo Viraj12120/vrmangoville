@@ -186,7 +186,7 @@ export default function Gallery() {
   };
 
   return (
-    <section ref={containerRef} className="relative w-screen h-screen bg-[#fdfbf7] overflow-hidden flex flex-col pt-16 md:pt-24 pb-16 md:pb-24">
+    <section ref={containerRef} id="gallery" className="relative w-screen h-screen bg-[#fdfbf7] overflow-hidden flex flex-col pt-16 md:pt-24 pb-16 md:pb-24">
       
       {/* Viewport Title - Safe at the top */}
       <div className="w-full text-center flex-shrink-0 mb-8 md:mb-12 px-6">

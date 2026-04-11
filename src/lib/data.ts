@@ -1,7 +1,7 @@
 export const NAV_LINKS = [
-  { label: 'OUR STORY', href: 'story-start' },
+  { label: 'STORY', href: 'story-start' },
+  { label: 'OUR ORCHARDS', href: 'gallery' },
   { label: 'SOCIAL', href: 'social' },
-  { label: 'TESTIMONIALS', href: 'testimonials' },
 ];
 
 export const HERO_CONTENT = {

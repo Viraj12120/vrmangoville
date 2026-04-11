@@ -141,7 +141,10 @@ export default function Hero() {
 
         <div className="mt-52 md:mt-24 flex flex-col md:flex-row gap-6 md:gap-12 justify-center items-center">
           <Magnetic>
-            <button className="group relative interactive py-2 overflow-hidden">
+            <button 
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              className="group relative interactive py-2 overflow-hidden"
+            >
               <span className={`font-display font-semibold tracking-wider transition-colors ${isVideoActive ? 'text-white' : 'text-foreground'}`}>
                 {HERO_CONTENT.primaryCTA}
               </span>
@@ -149,7 +152,10 @@ export default function Hero() {
             </button>
           </Magnetic>
           <Magnetic>
-            <button className="group relative interactive py-2 overflow-hidden">
+            <button 
+              onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
+              className="group relative interactive py-2 overflow-hidden"
+            >
               <span className={`font-display font-semibold tracking-wider transition-colors ${isVideoActive ? 'text-white' : 'text-foreground'}`}>
                 {HERO_CONTENT.secondaryCTA}
               </span>
