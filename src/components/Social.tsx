@@ -5,12 +5,12 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 import { useRef } from 'react';
-import { GALLERY_IMAGES } from '@/lib/data';
+import { ALL_GALLERY_IMAGES } from '@/lib/data';
 
 gsap.registerPlugin(ScrollTrigger);
 
 // Duplicate and stagger data to create long portrait stacks
-const DUP = [...GALLERY_IMAGES, ...GALLERY_IMAGES, ...GALLERY_IMAGES, ...GALLERY_IMAGES];
+const DUP = [...ALL_GALLERY_IMAGES, ...ALL_GALLERY_IMAGES, ...ALL_GALLERY_IMAGES, ...ALL_GALLERY_IMAGES];
 const COL1 = DUP.slice(0, 6);
 const COL2 = DUP.slice(5, 11).reverse();
 const COL3 = DUP.slice(10, 16);
@@ -44,6 +44,12 @@ export default function Social() {
 
     const upCols = gsap.utils.toArray('.col-up');
     const downCols = gsap.utils.toArray('.col-down');
+
+    // Hardware acceleration hints
+    gsap.set([...upCols, ...downCols], { 
+      willChange: 'transform',
+      force3D: true 
+    });
 
     // Columns scrolling UP
     tl.fromTo(upCols,

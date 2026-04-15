@@ -25,21 +25,21 @@ export default function CinematicSlide({ title, subtitle, content, image, index 
           src={image}
           alt={title}
           fill
-          className="object-cover scale-110 slide-image"
+          className="object-cover slide-image"
           priority={index < 2}
           sizes="100vw"
         />
-        {/* Dark overlays */}
-        <div className="absolute inset-0 bg-black/40 md:bg-black/50 backdrop-blur-[1px]" />
+        {/* Dark overlays - Explicitly removed backdrop-blur for performance */}
+        <div className="absolute inset-0 bg-black/40 md:bg-black/50" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 max-w-5xl px-6 text-center">
+      <div className="relative z-10 w-full max-w-5xl px-6 text-center select-none flex flex-col items-center justify-center">
         <span className="block text-saffron font-display text-[10px] md:text-sm uppercase tracking-[0.3em] mb-4 md:mb-6 slide-subtitle opacity-0 translate-y-4">
           {subtitle}
         </span>
-        <h2 className="text-3xl md:text-8xl font-display font-bold text-white mb-4 md:mb-8 leading-[1.1] slide-title opacity-0 translate-y-8">
+        <h2 className="text-4xl md:text-8xl font-display font-bold text-white mb-4 md:mb-8 leading-[1.1] slide-title opacity-0 translate-y-8 tracking-tight">
           {title}
         </h2>
         <div className="w-12 md:w-24 h-[1px] bg-saffron/50 mx-auto mb-6 md:mb-8 slide-line scale-x-0" />

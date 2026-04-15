@@ -27,8 +27,14 @@ export default function MangoStory() {
         start: "top top",
         end: `+=${STORY_DATA.length * 150}%`,
         pin: true,
-        scrub: 1,
+        scrub: true,
       }
+    });
+
+    // Hardware acceleration hints for smoothly animating elements
+    gsap.set('.cinematic-slide, .slide-image, .slide-title, .slide-subtitle, .slide-content, .slide-line', {
+      force3D: true,
+      willChange: 'transform, opacity, clip-path'
     });
 
     // Initial state for the first slide
@@ -46,7 +52,7 @@ export default function MangoStory() {
         );
 
         tl.fromTo(slide.querySelector('.slide-image'),
-          { scale: 1.15 },
+          { scale: 1.05 },
           { scale: 1, ease: 'none', duration: 1.5 },
           "<"
         );
@@ -77,7 +83,7 @@ export default function MangoStory() {
 
         tl.to(`.progress-bar-${i}`, { scaleX: 1, ease: 'none', duration: 1.5 }, "<");
       } else {
-        tl.to('.cinematic-slide-0 .slide-image', { scale: 1.05, ease: 'none', duration: 1.5 });
+        tl.to('.cinematic-slide-0 .slide-image', { scale: 1.04, ease: 'none', duration: 1.5 });
         tl.to('.progress-bar-0', { scaleX: 1, ease: 'none', duration: 1.5 }, "<");
       }
 
