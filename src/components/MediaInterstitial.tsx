@@ -6,8 +6,8 @@ import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 
 const VIDEOS = [
-	"https://res.cloudinary.com/dkwrwuuob/video/upload/v1776256808/IMG_0816_nxlwwm.mov",
-	"https://res.cloudinary.com/dkwrwuuob/video/upload/v1776256812/IMG_0850_uurc6s.mov",
+	"https://res.cloudinary.com/dkwrwuuob/video/upload/q_auto,f_auto/v1776256808/IMG_0816_nxlwwm.mp4",
+	"https://res.cloudinary.com/dkwrwuuob/video/upload/q_auto,f_auto/v1776256812/IMG_0850_uurc6s.mp4",
 ];
 
 export default function MediaInterstitial() {

@@ -38,7 +38,7 @@ export default function Gallery() {
   useEffect(() => {
     const storyImages = ALL_GALLERY_IMAGES.filter(img => img.isStory);
     const otherImages = ALL_GALLERY_IMAGES.filter(img => !img.isStory);
-    
+
     // Shuffle only the "Other" images
     const shuffledOthers = [...otherImages].sort(() => Math.random() - 0.5);
     const combined = [...shuffledOthers, ...storyImages];
@@ -53,9 +53,9 @@ export default function Gallery() {
     if (!container || !row1InnerRef.current || !row2ContainerRef.current || !row2InnerRef.current || row1Images.length === 0) return;
 
     // Fast CSS hints for transform operations
-    gsap.set([row1InnerRef.current, row2InnerRef.current], { 
+    gsap.set([row1InnerRef.current, row2InnerRef.current], {
       willChange: "transform",
-      force3D: true 
+      force3D: true
     });
 
     // Master Timeline for Pinning and Scrubbing
@@ -104,7 +104,7 @@ export default function Gallery() {
     const isDesktop = window.innerWidth > 768;
 
     gsap.set(modalRef.current, { pointerEvents: 'auto', display: 'flex', autoAlpha: 1 });
-    
+
     // Hide original node
     gsap.set(selectedItem.domNode, { opacity: 0 });
 
@@ -122,9 +122,9 @@ export default function Gallery() {
     });
 
     // Content container starts hidden
-    gsap.set(modalTextLeftRef.current, { 
-      autoAlpha: 0, 
-      x: isDesktop ? -100 : 0, 
+    gsap.set(modalTextLeftRef.current, {
+      autoAlpha: 0,
+      x: isDesktop ? -100 : 0,
       y: isDesktop ? 0 : 50,
       willChange: 'transform, opacity',
       force3D: true
@@ -136,7 +136,7 @@ export default function Gallery() {
     // Target layout params
     const targetWidth = isDesktop ? '55vw' : '90vw';
     const targetHeight = isDesktop ? '75vh' : '50vh';
-    
+
     tl.to(modalImageRef.current, {
       left: isDesktop ? '100%' : '50%',
       top: isDesktop ? '100%' : '60%',
@@ -177,7 +177,7 @@ export default function Gallery() {
   const handleClose = (e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
     if (!selectedItem || !modalImageRef.current || !modalTextLeftRef.current) return;
-    
+
     const isDesktop = window.innerWidth > 768;
     const tl = gsap.timeline({
       onComplete: () => {
@@ -188,7 +188,7 @@ export default function Gallery() {
 
     // Reverse slide and fade
     tl.to([modalCloseRef.current], { autoAlpha: 0, duration: 0.2 });
-    
+
     tl.to(modalTextLeftRef.current, {
       autoAlpha: 0,
       x: isDesktop ? -100 : 0,
@@ -214,17 +214,17 @@ export default function Gallery() {
 
   return (
     <section ref={containerRef} id="gallery" className="relative w-full min-h-screen bg-[#fdfbf7] overflow-hidden flex flex-col pt-16 md:pt-24 pb-16 md:pb-24">
-      
+
       {/* Viewport Title */}
       <div className="w-full text-center flex-shrink-0 mb-8 md:mb-12 px-6">
         <h2 className="font-display text-5xl md:text-8xl font-bold text-stone-900 tracking-tighter uppercase whitespace-nowrap">
-          Visual Gallery
+          Gallery
         </h2>
       </div>
 
       {/* Rows Container */}
       <div className="flex-grow flex flex-col justify-center gap-8 md:gap-12 overflow-visible">
-        
+
         {/* Row 1 */}
         <div className="w-full relative z-10 overflow-visible">
           <div ref={row1InnerRef} className="flex w-max gap-1">
@@ -271,14 +271,14 @@ export default function Gallery() {
 
       {/* Optimized Modal: Content Left, Image Bottom-Right */}
       {selectedItem && (
-        <div 
-          ref={modalRef} 
+        <div
+          ref={modalRef}
           onClick={() => handleClose()}
-          className="fixed inset-0 z-[999] bg-[#fdfbf7]/95 backdrop-blur-md flex items-center justify-center invisible cursor-zoom-out"
+          className="fixed inset-0 z-[999] bg-[#fdfbf7]/98 flex items-center justify-center invisible cursor-zoom-out"
         >
-          
+
           {/* Close Button */}
-          <button 
+          <button
             ref={modalCloseRef}
             onClick={(e) => handleClose(e)}
             className="absolute top-8 right-8 md:top-12 md:right-12 z-[1000] group flex flex-col items-center pointer-events-auto cursor-pointer"
@@ -287,21 +287,21 @@ export default function Gallery() {
             <div className="w-8 h-[1px] bg-stone-900" />
           </button>
 
-          {/* Combined Text Stack: Top-Left on Desktop */}
-          <div 
+          {/* Combined Text Stack: Uniformly shifted from edge */}
+          <div
             ref={modalTextLeftRef}
-            className="absolute left-0 top-0 w-full md:w-[45vw] h-full flex flex-col justify-start md:justify-center px-8 md:px-20 pt-24 md:pt-0 z-[60] pointer-events-none"
+            className="absolute left-0 md:left-[5vw] lg:left-[6vw] top-0 w-full md:w-[40vw] h-full flex flex-col justify-start md:justify-center px-8 md:px-0 pt-24 md:pt-0 z-[60] pointer-events-none"
           >
             <div className="max-w-2xl flex flex-col items-start text-left">
-              <h3 className="font-display text-5xl md:text-9xl font-bold text-stone-900 tracking-tighter leading-[0.85] mb-8 md:mb-12">
+              <h3 className="font-display text-5xl md:text-8xl lg:text-9xl font-bold text-stone-900 tracking-[-0.05em] leading-[0.85] mb-8 md:mb-12">
                 {selectedItem.alt}
               </h3>
-              
+
               <div className="flex flex-col items-start">
                 <span className="inline-block text-[#c47728] font-display text-[10px] md:text-xs uppercase tracking-[0.5em] mb-4 font-bold">
                   Heritage Story
                 </span>
-                <p className="font-sans text-lg md:text-2xl text-stone-700 leading-relaxed font-light max-w-lg">
+                <p className="font-sans text-lg md:text-xl lg:text-2xl text-stone-700 leading-relaxed font-light max-w-lg">
                   {selectedItem.description}
                 </p>
               </div>
@@ -309,17 +309,17 @@ export default function Gallery() {
           </div>
 
           {/* Image Layer: Sticky to Bottom-Right on Desktop */}
-          <div 
+          <div
             ref={modalImageRef}
             onClick={(e) => e.stopPropagation()}
             className="absolute z-50 overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.3)] bg-stone-200 cursor-default"
           >
-            <Image 
-              src={selectedItem.image} 
-              alt={selectedItem.alt} 
-              fill 
+            <Image
+              src={selectedItem.image}
+              alt={selectedItem.alt}
+              fill
               priority
-              className="object-cover" 
+              className="object-cover"
             />
           </div>
 
