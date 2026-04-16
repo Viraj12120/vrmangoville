@@ -99,7 +99,7 @@ export const ALL_GALLERY_IMAGES = [
   { image: '/story/18.jpeg', alt: 'Ready for Home', description: 'Clean, labeled, and ready for their final journey.', isStory: false },
   { image: '/story/19.jpeg', alt: 'The Final Touch', description: 'A final polish before sealing the crates of gold.', isStory: false },
   { image: '/story/115.jpeg', alt: 'Natural Maturation', description: 'Straw-ripening techniques that respect the fruit’s natural timeline.', isStory: false },
-  { image: '/story/growth.png', alt: 'Sustainable Growth', description: 'Focusing on the long-term health of our orchards.', isStory: false },
+  { image: '/story/growth.jpeg', alt: 'Sustainable Growth', description: 'Focusing on the long-term health of our orchards.', isStory: false },
   { image: '/story/origin.png', alt: 'Rooted Wisdom', description: 'The ancient trees that form the backbone of our premium yield.', isStory: false },
   { image: '/story/present.png', alt: 'Modern Standards', description: 'Blending traditional farm wisdom with modern quality standards.', isStory: false },
 ];

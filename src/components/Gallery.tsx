@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { useRef, useState, useEffect } from 'react';
 import { ALL_GALLERY_IMAGES } from '@/lib/data';
 
-gsap.registerPlugin(ScrollTrigger);
+// gsap.registerPlugin(ScrollTrigger); // Centralized in MangoStory.tsx
 
 // We will handle row generation inside the component to support client-side randomization
 
@@ -65,8 +65,8 @@ export default function Gallery() {
         start: 'top top',
         end: '+=300%', // Increased for better pinned feeling
         pin: true,
-        scrub: 0.5, // Smoother follow-through, hides micro-stutters
-        refreshPriority: -1
+        scrub: 0.5,
+        refreshPriority: 1 // Lower priority than story section but higher than social
       }
     });
 
@@ -91,10 +91,24 @@ export default function Gallery() {
           trigger: container,
           start: 'top 50%',
           once: true,
-          refreshPriority: -1
+          refreshPriority: 1
         }
       }
     );
+
+    // GSAP Hover animations for gallery items (replacing unstable CSS transitions)
+    const items = gsap.utils.toArray('.gallery-item');
+    items.forEach((item: any) => {
+      const img = item.querySelector('img');
+      item.addEventListener('mouseenter', () => {
+        gsap.to(item, { scale: 1.05, duration: 0.4, ease: 'power2.out' });
+        gsap.to(img, { filter: 'brightness(1.1)', duration: 0.4 });
+      });
+      item.addEventListener('mouseleave', () => {
+        gsap.to(item, { scale: 1, duration: 0.4, ease: 'power2.inOut' });
+        gsap.to(img, { filter: 'brightness(1)', duration: 0.4 });
+      });
+    });
   }, { scope: containerRef, dependencies: [row1Images] });
 
   // Modal Animation Logic - Refactored for Content Left, Image Bottom-Right
@@ -232,15 +246,16 @@ export default function Gallery() {
               <div
                 onClick={(e) => handleImageClick(item, e)}
                 key={`r1-${idx}`}
-                className="gallery-item group relative w-[40vw] sm:w-[30vw] md:w-[20vw] lg:w-[15vw] aspect-[4/5] cursor-pointer transition-transform duration-300 ease-out hover:scale-105 hover:z-50 hover:shadow-2xl overflow-hidden rounded-sm"
+                className="gallery-item group relative w-[40vw] sm:w-[30vw] md:w-[20vw] lg:w-[15vw] aspect-[4/5] cursor-pointer overflow-hidden rounded-sm bg-stone-100 shadow-xl"
               >
                 <Image
                   src={item.image}
                   alt={item.alt}
                   fill
-                  priority={idx < 6}
+                  loading="lazy"
+                  quality={60} // Lower quality for massive 10MB+ assets to reduce memory lag
                   sizes="(max-width: 768px) 40vw, 15vw"
-                  className="object-cover"
+                  className="object-cover transition-none"
                 />
               </div>
             ))}
@@ -254,15 +269,16 @@ export default function Gallery() {
               <div
                 onClick={(e) => handleImageClick(item, e)}
                 key={`r2-${idx}`}
-                className="gallery-item group relative w-[40vw] sm:w-[30vw] md:w-[20vw] lg:w-[15vw] aspect-[4/5] cursor-pointer transition-transform duration-300 ease-out hover:scale-105 hover:z-50 hover:shadow-2xl overflow-hidden rounded-sm"
+                className="gallery-item group relative w-[40vw] sm:w-[30vw] md:w-[20vw] lg:w-[15vw] aspect-[4/5] cursor-pointer overflow-hidden rounded-sm bg-stone-100 shadow-xl"
               >
                 <Image
                   src={item.image}
                   alt={item.alt}
                   fill
-                  priority={idx < 6}
+                  loading="lazy"
+                  quality={60}
                   sizes="(max-width: 768px) 40vw, 15vw"
-                  className="object-cover"
+                  className="object-cover transition-none"
                 />
               </div>
             ))}

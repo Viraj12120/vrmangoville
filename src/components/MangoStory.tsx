@@ -28,6 +28,7 @@ export default function MangoStory() {
         end: `+=${STORY_DATA.length * 150}%`,
         pin: true,
         scrub: true,
+        refreshPriority: 2, // Highest priority for the first main section
       }
     });
 
@@ -90,6 +91,12 @@ export default function MangoStory() {
       tl.to({}, { duration: 0.8 });
     });
 
+    // Refresh all triggers after a small delay to ensure all nested content is measured
+    const refreshTimeout = setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 1000);
+
+    return () => clearTimeout(refreshTimeout);
   }, { scope: containerRef });
 
   return (
