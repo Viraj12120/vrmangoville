@@ -65,19 +65,19 @@ export default function Gallery() {
         start: 'top top',
         end: '+=300%', // Increased for better pinned feeling
         pin: true,
-        scrub: true, // Sync perfectly with Lenis, avoid delay compounding
+        scrub: 0.5, // Smoother follow-through, hides micro-stutters
         refreshPriority: -1
       }
     });
 
     // Row 1: LEFT TO RIGHT
     // With 2 copies, 50% is exactly one full set of images
-    gsap.set(row1InnerRef.current, { x: "-50%" });
-    tl.to(row1InnerRef.current, { x: "0%", ease: 'none' }, 0);
+    gsap.set(row1InnerRef.current, { xPercent: -50 });
+    tl.to(row1InnerRef.current, { xPercent: 0, ease: 'none' }, 0);
 
     // Row 2: RIGHT TO LEFT
-    gsap.set(row2InnerRef.current, { x: "0%" });
-    tl.to(row2InnerRef.current, { x: "-50%", ease: 'none' }, 0);
+    gsap.set(row2InnerRef.current, { xPercent: 0 });
+    tl.to(row2InnerRef.current, { xPercent: -50, ease: 'none' }, 0);
 
     // Row 2 Pop up effect
     gsap.fromTo(row2ContainerRef.current,
@@ -238,6 +238,7 @@ export default function Gallery() {
                   src={item.image}
                   alt={item.alt}
                   fill
+                  priority={idx < 6}
                   sizes="(max-width: 768px) 40vw, 15vw"
                   className="object-cover"
                 />
@@ -259,6 +260,7 @@ export default function Gallery() {
                   src={item.image}
                   alt={item.alt}
                   fill
+                  priority={idx < 6}
                   sizes="(max-width: 768px) 40vw, 15vw"
                   className="object-cover"
                 />
@@ -290,17 +292,15 @@ export default function Gallery() {
           {/* Combined Text Stack: Uniformly shifted from edge */}
           <div
             ref={modalTextLeftRef}
-            className="absolute left-0 md:left-[5vw] lg:left-[6vw] top-0 w-full md:w-[40vw] h-full flex flex-col justify-start md:justify-center px-8 md:px-0 pt-24 md:pt-0 z-[60] pointer-events-none"
+            className="absolute left-0 md:left-[5vw] lg:left-[6vw] top-0 w-full md:w-[40vw] h-[45vh] md:h-full flex flex-col justify-center px-8 md:px-0 z-[60] pointer-events-none"
           >
-            <div className="max-w-2xl flex flex-col items-start text-left">
-              <h3 className="font-display text-5xl md:text-8xl lg:text-9xl font-bold text-stone-900 tracking-[-0.05em] leading-[0.85] mb-8 md:mb-12">
+            <div className="max-w-2xl flex flex-col items-center text-center md:items-start md:text-left">
+              <h3 className="font-display text-4xl sm:text-5xl md:text-8xl lg:text-9xl font-bold text-stone-900 tracking-[-0.05em] leading-[0.85] mb-8 md:mb-12">
                 {selectedItem.alt}
               </h3>
 
               <div className="flex flex-col items-start">
-                <span className="inline-block text-[#c47728] font-display text-[10px] md:text-xs uppercase tracking-[0.5em] mb-4 font-bold">
-                  Heritage Story
-                </span>
+
                 <p className="font-sans text-lg md:text-xl lg:text-2xl text-stone-700 leading-relaxed font-light max-w-lg">
                   {selectedItem.description}
                 </p>

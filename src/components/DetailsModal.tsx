@@ -63,11 +63,12 @@ export default function DetailsModal() {
             src={activeDetail.img} 
             alt={activeDetail.title}
             fill
+            priority
             className="object-cover"
           />
         </div>
 
-        <div className="p-8 md:p-12 md:w-1/2 flex flex-col justify-center">
+        <div className="p-8 md:p-12 md:w-1/2 flex flex-col justify-center items-center md:items-start text-center md:text-left">
           <span className="text-saffron font-display uppercase tracking-widest text-xs mb-4">Discovery</span>
           <h2 className="text-4xl md:text-5xl font-display font-bold leading-tight mb-6">
             {activeDetail.title}
@@ -77,7 +78,7 @@ export default function DetailsModal() {
           </p>
           <button 
             onClick={closeDetail}
-            className="self-start px-8 py-3 bg-saffron text-white rounded-full font-display font-semibold hover:scale-105 transition-transform"
+            className="self-center md:self-start px-8 py-3 bg-saffron text-white rounded-full font-display font-semibold hover:scale-105 transition-transform"
           >
             BACK TO STORY
           </button>

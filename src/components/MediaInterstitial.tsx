@@ -6,8 +6,8 @@ import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
 
 const VIDEOS = [
-	"https://res.cloudinary.com/dkwrwuuob/video/upload/q_auto,f_auto/v1776256808/IMG_0816_nxlwwm.mp4",
-	"https://res.cloudinary.com/dkwrwuuob/video/upload/q_auto,f_auto/v1776256812/IMG_0850_uurc6s.mp4",
+	"https://res.cloudinary.com/dkwrwuuob/video/upload/v1776256808/IMG_0816_nxlwwm.mov",
+	"https://res.cloudinary.com/dkwrwuuob/video/upload/v1776256812/IMG_0850_uurc6s.mov",
 ];
 
 export default function MediaInterstitial() {
@@ -62,7 +62,7 @@ export default function MediaInterstitial() {
 			</div>
 			<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
 
-			<div className="absolute bottom-12 left-12 z-20">
+			<div className="absolute bottom-12 left-6 right-6 md:left-12 md:right-auto z-20 flex flex-col items-center md:items-start text-center md:text-left">
 				<span className="text-white/40 font-display text-sm uppercase tracking-[0.4em] mb-4 block">
 					Cinematic Atmosphere
 				</span>
@@ -76,7 +76,7 @@ export default function MediaInterstitial() {
 
 			<button
 				onClick={closeVideo}
-				className="absolute top-12 right-12 z-20 text-white/50 hover:text-white transition-colors uppercase tracking-widest text-xs font-display flex items-center gap-4">
+				className="absolute top-8 right-6 md:top-12 md:right-12 z-20 text-white/50 hover:text-white transition-colors uppercase tracking-widest text-xs font-display flex items-center gap-4">
 				Close Experience
 				<div className="w-8 h-[1px] bg-white/20" />
 			</button>
